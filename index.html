@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booth: four photos, one strip</title>
+  <meta name="description" content="A free online photo booth. Take four photos and download them as a classic photo strip. Nothing is uploaded.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="curtain">
+    <h1>Booth</h1>
+    <p>Four photos, one strip. Everything stays on your device.</p>
+  </header>
+
+  <main>
+    <section class="booth" aria-label="Camera">
+      <div class="viewfinder" id="viewfinder">
+        <video id="video" playsinline muted></video>
+        <div id="countdown" class="countdown" aria-hidden="true"></div>
+        <div id="flash" class="flash" aria-hidden="true"></div>
+        <div id="gate" class="gate">
+          <p id="gateMsg">Your camera is off.</p>
+          <button id="enable" class="btn" type="button">Turn on camera</button>
+        </div>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <button id="start" class="btn btn-main" type="button" disabled>Take 4 photos</button>
+
+      <div class="options">
+        <fieldset>
+          <legend>Filter</legend>
+          <div class="choices">
+            <label><input type="radio" name="filter" value="none" checked><span>Color</span></label>
+            <label><input type="radio" name="filter" value="mono"><span>Black and white</span></label>
+            <label><input type="radio" name="filter" value="sepia"><span>Sepia</span></label>
+            <label><input type="radio" name="filter" value="vivid"><span>Vivid</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Strip color</legend>
+          <div class="choices">
+            <!-- Keep these hex values in sync with PAPERS in script.js -->
+            <label><input type="radio" name="paper" value="white" checked><span class="swatch" style="--sw:#fbfaf7" title="White"></span><span class="sr">White</span></label>
+            <label><input type="radio" name="paper" value="red"><span class="swatch" style="--sw:#c2334a" title="Red"></span><span class="sr">Red</span></label>
+            <label><input type="radio" name="paper" value="yellow"><span class="swatch" style="--sw:#ffd23f" title="Yellow"></span><span class="sr">Yellow</span></label>
+            <label><input type="radio" name="paper" value="black"><span class="swatch" style="--sw:#1b1b2f" title="Black"></span><span class="sr">Black</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <aside class="strip-wrap" aria-label="Photo strip">
+      <div id="strip" class="strip">
+        <div class="slot"><img alt="" hidden></div>
+        <div class="slot"><img alt="" hidden></div>
+        <div class="slot"><img alt="" hidden></div>
+        <div class="slot"><img alt="" hidden></div>
+        <p id="caption" class="caption"></p>
+      </div>
+      <div class="actions">
+        <button id="download" class="btn" type="button" disabled>Download strip</button>
+        <button id="reset" class="btn btn-quiet" type="button" disabled>Clear</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
